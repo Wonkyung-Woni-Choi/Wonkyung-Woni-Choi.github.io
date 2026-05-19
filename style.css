@@ -263,13 +263,13 @@ a:hover { border-bottom-color: var(--ink); }
 .lede {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 1.22rem;
-  line-height: 1.55;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--ink);
-  margin: 0 0 1.1rem;
+  margin: 0 0 1rem;
 }
 
-.panel-main p { color: var(--ink-soft); margin: 0 0 1rem; font-size: 1rem; }
+.panel-main p { color: var(--ink-soft); margin: 0 0 1rem; font-size: 1rem; line-height: 1.6; }
 .panel-main em { color: var(--ink); font-style: italic; }
 
 .chip-cluster {
@@ -314,6 +314,21 @@ a:hover { border-bottom-color: var(--ink); }
   text-transform: uppercase;
   color: var(--ink);
   margin: 0 0 1.3rem;
+}
+
+.portrait {
+  margin: 0 0 2rem;
+}
+.portrait img {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 4px;
+  filter: grayscale(0%);
 }
 
 .timeline {
@@ -620,20 +635,56 @@ a:hover { border-bottom-color: var(--ink); }
 .site-footer {
   border-top: 1px solid var(--rule);
   background: var(--bg);
-  padding: 1.75rem 0;
+  padding: 1.75rem 0 1.5rem;
 }
 .footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "name copy"
+    "links links"
+    "icons icons";
+  gap: 0.65rem 1rem;
   font-size: 0.85rem;
   color: var(--ink-soft);
 }
-.footer-links { display: flex; gap: 1.25rem; }
+.footer-inner > div:first-child { grid-area: name; }
+.footer-inner .copy { grid-area: copy; justify-self: end; align-self: center; }
+.footer-links { grid-area: links; display: flex; flex-wrap: wrap; gap: 1.25rem; }
 .footer-links a { color: var(--ink-soft); border-bottom: none; }
 .footer-links a:hover { color: var(--ink); border-bottom: 1px solid var(--ink); }
+
+.footer-icons {
+  grid-area: icons;
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  margin-top: 0.1rem;
+}
+.footer-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--ink-soft);
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+.footer-icons a:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--bg);
+}
+.footer-icons svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
 .copy { color: var(--muted); font-size: 0.8rem; }
 
 /* ---------- Misc ---------- */
